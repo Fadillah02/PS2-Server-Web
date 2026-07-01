@@ -1,0 +1,13 @@
+{
+  "port": 3001,
+  "password": "changeme",
+  "playJsEnabled": true,
+  "baseDir": "C:\\PS2",
+  "gamesDir": "C:\\PS2\\isos",
+  "savesDir": "C:\\PS2\\saves",
+  "biosDir": "C:\\PS2\\bios",
+  "pcsx2Path": "PCSX2\\pcsx2-qt.exe",
+  "pcsx2Args": ["-batch"],
+  "gameExtensions": [".iso", ".chd", ".cso", ".bin", ".elf", ".gz"],
+  "maxUploadMB": 4500
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PS2 Server Web — Kelola game PS2 dan jalankan via PCSX2 dari browser">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>PS2 Emulator Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="gradient-bar"></div>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon"><i class="fas fa-gamepad"></i></div>
+                <div>
+                    <h1>PS2 Dashboard</h1>
+                    <p class="sidebar-sub">Kelola Game PS2 via Browser</p>
+                </div>
+            </div>
+
+            <div class="storage-section">
+                <h3>Status Emulator</h3>
+                <div id="emulator-status" class="status-card idle">
+                    <div class="status-dot"></div>
+                    <span id="status-text">Memuat...</span>
+                </div>
+                <div id="current-game" class="current-game hidden"></div>
+                <button class="btn btn-danger btn-block hidden" id="stop-btn">
+                    <i class="fas fa-stop"></i> Stop PCSX2
+                </button>
+            </div>
+
+            <div class="storage-section">
+                <h3>Storage ISO</h3>
+                <div id="storage-info" class="drives-list"></div>
+            </div>
+
+            <div class="storage-section">
+                <h3>System</h3>
+                <div id="system-info" class="system-info"></div>
+            </div>
+
+            <div class="shortcuts-section">
+                <h3>Folder</h3>
+                <div class="shortcuts-list">
+                    <button class="shortcut-btn" id="btn-games"><i class="fas fa-compact-disc"></i> Games (ISO)</button>
+                    <button class="shortcut-btn" id="btn-saves"><i class="fas fa-save"></i> Saves</button>
+                    <button class="shortcut-btn" id="btn-bios"><i class="fas fa-microchip"></i> BIOS</button>
+                    <button class="shortcut-btn" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <h2 id="page-title"><i class="fas fa-compact-disc"></i> Library Game</h2>
+                <div class="toolbar-actions">
+                    <button class="btn btn-secondary" id="refresh-btn"><i class="fas fa-sync"></i> Refresh</button>
+                    <button class="btn btn-primary" id="upload-btn"><i class="fas fa-upload"></i> Upload ISO</button>
+                    <input type="file" id="upload-input" accept=".iso,.chd,.cso,.bin,.elf,.gz" hidden>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden"><div class="spinner"></div><p>Loading...</p></div>
+            <div id="games-grid" class="games-grid"></div>
+            <div id="files-view" class="file-container list-view hidden"></div>
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fas fa-compact-disc"></i>
+                <p>Belum ada game. Upload ISO atau letakkan di folder games.</p>
+            </div>
+            <div id="error-state" class="error-state hidden">
+                <i class="fas fa-exclamation-circle"></i>
+                    <p id="error-message"></p>
+                </div>
+
+            <footer class="dashboard-footer">
+                <span><i class="fas fa-globe"></i> Play!.js — experimental browser emulator</span>
+                <span><i class="fas fa-desktop"></i> PCSX2 — native fallback (performa lebih baik)</span>
+            </footer>
+        </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <div id="confirm-modal" class="modal hidden">
+        <div class="modal-content prompt-content">
+            <div class="modal-header">
+                <h2 id="confirm-title">Konfirmasi</h2>
+                <button class="modal-close" id="confirm-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body"><p id="confirm-message"></p></div>
+            <div class="modal-footer">
+                <button id="confirm-cancel" class="btn btn-secondary">Batal</button>
+                <button id="confirm-ok" class="btn btn-primary btn-danger">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

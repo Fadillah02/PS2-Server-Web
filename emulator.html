@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play!.js — PS2 Browser Emulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="emulator-body">
+    <div class="emulator-shell">
+        <header class="emulator-header">
+            <a href="index.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+            <div class="emulator-title">
+                <i class="fas fa-globe"></i>
+                <span id="game-title">Play!.js Emulator</span>
+            </div>
+            <div class="emulator-header-actions">
+                <span id="fps-counter" class="fps-badge hidden">0 f/s</span>
+                <button class="btn btn-secondary btn-sm" id="toggle-controls" title="Controls"><i class="fas fa-keyboard"></i></button>
+                <button class="btn btn-secondary btn-sm" id="fullscreen-btn" title="Fullscreen"><i class="fas fa-expand"></i></button>
+            </div>
+        </header>
+
+        <div class="emulator-stage">
+            <div id="loading-screen" class="emu-loading">
+                <div class="emu-loading-inner">
+                    <div class="spinner"></div>
+                    <h3 id="loading-status">Memuat Play!.js...</h3>
+                    <p id="loading-detail" class="loading-detail">Inisialisasi WebAssembly emulator</p>
+                    <div class="progress-bar"><div id="loading-progress" class="progress-fill" style="width:0%"></div></div>
+                </div>
+            </div>
+            <canvas id="outputCanvas" width="640" height="480" tabindex="0"></canvas>
+        </div>
+
+        <aside id="controls-panel" class="controls-panel hidden">
+            <h3><i class="fas fa-gamepad"></i> Kontrol Keyboard</h3>
+            <div class="controls-grid">
+                <div><span>D-Pad</span><kbd>Arrow Keys</kbd></div>
+                <div><span>Left Stick</span><kbd>F H T G</kbd></div>
+                <div><span>Right Stick</span><kbd>J L I K</kbd></div>
+                <div><span>□ △ ○ ✕</span><kbd>A S X Z</kbd></div>
+                <div><span>Start / Select</span><kbd>Enter / Backspace</kbd></div>
+                <div><span>L1 L2 L3</span><kbd>1 2 3</kbd></div>
+                <div><span>R1 R2 R3</span><kbd>8 9 0</kbd></div>
+            </div>
+            <p class="controls-note">Experimental — performa tergantung hardware. Game berat mungkin lambat di browser.</p>
+        </aside>
+    </div>
+
+    <script type="module" src="assets/emulator.js"></script>
+</body>
+</html>
